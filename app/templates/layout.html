@@ -24,7 +24,7 @@ body {
 				<a class="brand" href="/">TodoApp</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li class="active"><a href="/">Home</a></li>
+						<li class="active"><a href="{{ url_for('login') }}">Home</a></li>
 						{% if g.user.is_authenticated()%}
 							<li><a href="/new">New Todo</a></li>
 							<li><a href="{{ url_for('logout') }}">Logout</a></li>

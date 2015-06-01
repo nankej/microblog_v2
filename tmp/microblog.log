@@ -1,0 +1,118 @@
+2015-06-01 12:29:02,375 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-01 12:29:10,468 ERROR: Exception on /edit [GET] [in /home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask_login.py", line 758, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/jacobnanke/Projects/microblog_v2/app/views.py", line 106, in edit
+    return render_template('edit.html', form=form)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/jinja2/environment.py", line 969, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/jinja2/environment.py", line 742, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/jinja2/_compat.py", line 36, in reraise
+    raise value.with_traceback(tb)
+  File "/home/jacobnanke/Projects/microblog_v2/app/templates/edit.html", line 2, in <module>
+    {% extends "base.html" %}
+  File "/home/jacobnanke/Projects/microblog_v2/app/templates/base.html", line 27, in <module>
+    {% block content %}{% endblock %}
+  File "/home/jacobnanke/Projects/microblog_v2/app/templates/edit.html", line 12, in <module>
+    {{ form.nickname(size=24) }}
+jinja2.exceptions.UndefinedError: 'app.forms.EditForm object' has no attribute 'nickname'
+2015-06-01 12:29:18,213 ERROR: Exception on /edit [GET] [in /home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask_login.py", line 758, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/jacobnanke/Projects/microblog_v2/app/views.py", line 106, in edit
+    return render_template('edit.html', form=form)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/jinja2/environment.py", line 969, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/jinja2/environment.py", line 742, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/jinja2/_compat.py", line 36, in reraise
+    raise value.with_traceback(tb)
+  File "/home/jacobnanke/Projects/microblog_v2/app/templates/edit.html", line 2, in <module>
+    {% extends "base.html" %}
+  File "/home/jacobnanke/Projects/microblog_v2/app/templates/base.html", line 27, in <module>
+    {% block content %}{% endblock %}
+  File "/home/jacobnanke/Projects/microblog_v2/app/templates/edit.html", line 12, in <module>
+    {{ form.nickname(size=24) }}
+jinja2.exceptions.UndefinedError: 'app.forms.EditForm object' has no attribute 'nickname'
+2015-06-01 12:30:18,688 ERROR: Exception on /edit [GET] [in /home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask_login.py", line 758, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/jacobnanke/Projects/microblog_v2/app/views.py", line 106, in edit
+    return render_template('edit.html', form=form)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/jinja2/environment.py", line 969, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/jinja2/environment.py", line 742, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/jinja2/_compat.py", line 36, in reraise
+    raise value.with_traceback(tb)
+  File "/home/jacobnanke/Projects/microblog_v2/app/templates/edit.html", line 2, in <module>
+    {% extends "base.html" %}
+  File "/home/jacobnanke/Projects/microblog_v2/app/templates/base.html", line 27, in <module>
+    {% block content %}{% endblock %}
+  File "/home/jacobnanke/Projects/microblog_v2/app/templates/edit.html", line 12, in <module>
+    {{ form.nickname(size=24) }}
+jinja2.exceptions.UndefinedError: 'app.forms.EditForm object' has no attribute 'nickname'
+2015-06-01 12:30:50,874 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-01 12:30:51,361 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-01 12:31:29,131 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-01 12:31:29,629 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-01 12:31:45,575 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-01 14:27:37,075 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-01 14:28:18,346 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-01 14:28:22,553 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-01 14:28:28,329 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-01 14:29:48,171 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-01 14:30:14,764 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-01 14:31:39,670 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]

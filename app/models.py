@@ -12,6 +12,9 @@ class User(db.Model):
     username = db.Column('username', db.String(20), unique=True , index=True)
     password = db.Column('password' , db.String(250))
     email = db.Column('email',db.String(50),unique=True , index=True)
+    registered_on = db.Column('registered_on' , db.DateTime)
+    about_me = db.Column(db.String(140))
+    last_seen = db.Column(db.DateTime)
 
     def __init__(self , username ,password , email):
         self.username = username
@@ -42,6 +45,18 @@ class User(db.Model):
 
     def avatar(self, size):
         return 'http://www.gravatar.com/avatar/%s?d=mm&s=%d' % (md5(self.email.encode('utf-8')).hexdigest(), size)
+
+    @staticmethod
+    def make_unique_username(username):
+        if User.query.filter_by(username=username).first() is None:
+            return username
+        version = 2
+        while True:
+            new_username = username + str(version)
+            if User.query.filter_by(username=new_username).first() is None:
+                break
+            version += 1
+        return new_username
 
 class Post(db.Model):
     __tablename__ = "posts"
