@@ -116,3 +116,88 @@ jinja2.exceptions.UndefinedError: 'app.forms.EditForm object' has no attribute '
 2015-06-01 14:29:48,171 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
 2015-06-01 14:30:14,764 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
 2015-06-01 14:31:39,670 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:15:51,271 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:15:59,628 ERROR: Exception on /login [POST] [in /home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/jacobnanke/Projects/microblog_v2/app/views.py", line 49, in login
+    registered_user = User.query.filter_by(username=username).first()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/flask_sqlalchemy/__init__.py", line 452, in __get__
+    mapper = orm.class_mapper(type)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/orm/base.py", line 412, in class_mapper
+    mapper = _inspect_mapped_class(class_, configure=configure)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/orm/base.py", line 391, in _inspect_mapped_class
+    mapper._configure_all()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/orm/mapper.py", line 1156, in _configure_all
+    configure_mappers()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/orm/mapper.py", line 2598, in configure_mappers
+    mapper._post_configure_properties()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/orm/mapper.py", line 1696, in _post_configure_properties
+    prop.init()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/orm/interfaces.py", line 144, in init
+    self.do_init()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/orm/relationships.py", line 1551, in do_init
+    self._setup_join_conditions()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/orm/relationships.py", line 1625, in _setup_join_conditions
+    can_be_synced_fn=self._columns_are_mapped
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/orm/relationships.py", line 1894, in __init__
+    self._annotate_fks()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/orm/relationships.py", line 2091, in _annotate_fks
+    self._annotate_present_fks()
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/orm/relationships.py", line 2148, in _annotate_present_fks
+    {"binary": visit_binary}
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/sql/visitors.py", line 287, in cloned_traverse
+    obj = clone(obj)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/sql/visitors.py", line 283, in clone
+    meth(newelem)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/orm/relationships.py", line 2136, in visit_binary
+    col = is_foreign(binary.left, binary.right)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/orm/relationships.py", line 2118, in is_foreign
+    if a.references(b):
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 1175, in references
+    if fk.column.proxy_set.intersection(column.proxy_set):
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/util/langhelpers.py", line 725, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+  File "/home/jacobnanke/Projects/microblog_v2/flask/lib/python3.4/site-packages/sqlalchemy/sql/schema.py", line 1728, in column
+    tablekey)
+sqlalchemy.exc.NoReferencedTableError: Foreign key associated with column 'followers.follower_id' could not find table 'user' with which to generate a foreign key to target column 'id'
+2015-06-02 07:16:15,313 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:16:15,887 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:19:23,397 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:19:41,301 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:19:43,617 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:19:44,107 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:23:28,388 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:23:28,904 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:23:47,753 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:25:02,061 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:25:25,865 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:27:53,417 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:28:03,728 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:28:04,220 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:38:47,180 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:44:08,837 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:44:14,422 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:46:39,545 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:47:10,977 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:50:35,151 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:50:35,653 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 07:58:58,799 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 08:17:05,223 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 08:45:45,910 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 08:47:02,474 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 08:47:03,008 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 08:51:19,319 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 08:53:59,713 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
+2015-06-02 08:54:00,228 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:41]
