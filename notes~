@@ -1,2 +1,11 @@
-is each user a follower of themselves? Will their own posts show up on their feed?
+#is each user a follower of themselves? Will their own posts show up on their feed?
 
+#create "bocking user" functionality
+For example, we have not elected to support the ability to block users. 
+This would add one more layer of complexity to our queries, since now we not 
+only need to grab the posts of the users we follow, but we need to filter out those from users that decided to block us. How would you implement this? Simple, 
+one more many-to-many self-referential relationship to record who's blocking who, and one more join+filter in the query that returns the followed posts.
+
+#custom lists
+Another popular feature in social networks is the ability to group followers into custom lists, and then sharing content only with specific groups. 
+This is also implemented with additional relationships and added complexity to the queries.

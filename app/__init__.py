@@ -4,6 +4,7 @@ from config import basedir
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
+from flask.ext.bootstrap import Bootstrap
 
 
 app = Flask(__name__)
@@ -15,6 +16,8 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 login_manager.login_view = 'login'
+
+bootstrap = Bootstrap(app)
 
 from app import views, models
 
