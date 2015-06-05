@@ -1,4 +1,3 @@
-from config import POSTS_PER_PAGE
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from app import app, db, login_manager
@@ -8,6 +7,11 @@ from .forms import LoginForm, EditForm
 
 from .forms import LoginForm, EditForm, PostForm
 from .models import User, Post
+
+from config import POSTS_PER_PAGE
+# index view function suppressed for brevity
+
+
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -79,16 +83,14 @@ def before_request():
         db.session.commit()
 
 @app.route('/user/<username>')
+@app.route('/user/<username>/<int:page>')
 @login_required
-def user(username):
+def user(username, page=1):
     user = User.query.filter_by(username=username).first()
-    if user == None:
+    if user is None:
         flash('User %s not found.' % username)
         return redirect(url_for('index'))
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
+    posts = user.posts.paginate(page, POSTS_PER_PAGE, False)
     return render_template('user.html',
                            user=user,
                            posts=posts)
