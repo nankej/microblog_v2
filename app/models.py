@@ -1,9 +1,8 @@
 from setuptools.compat import unicode
 from app import db
-
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from app import app
 from hashlib import md5
 
 followers = db.Table('followers',
@@ -86,8 +85,11 @@ class User(db.Model):
             version += 1
         return new_username
 
+import flask.ext.whooshalchemy as whooshalchemy
+
 class Post(db.Model):
     __tablename__ = "posts"
+    __searchable__ = ['body']
     id = db.Column(db.Integer, primary_key = True)
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime)
@@ -95,3 +97,5 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post %r>' % (self.body)
+
+whooshalchemy.whoosh_index(app, Post)

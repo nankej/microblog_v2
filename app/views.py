@@ -1,17 +1,12 @@
-from flask import render_template, flash, redirect, session, url_for, request, g
+from flask import render_template, flash, redirect, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from app import app, db, login_manager
-from .models import User
 from datetime import datetime
-from .forms import LoginForm, EditForm
-
-from .forms import LoginForm, EditForm, PostForm
+from .forms import SearchForm
+from .forms import EditForm, PostForm
 from .models import User, Post
-
 from config import POSTS_PER_PAGE
-# index view function suppressed for brevity
-
-
+from config import MAX_SEARCH_RESULTS
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -81,6 +76,7 @@ def before_request():
         g.user.last_seen = datetime.utcnow()
         db.session.add(g.user)
         db.session.commit()
+        g.search_form = SearchForm()
 
 @app.route('/user/<username>')
 @app.route('/user/<username>/<int:page>')
@@ -157,3 +153,18 @@ def unfollow(username):
     db.session.commit()
     flash('You have stopped following ' + username + '.')
     return redirect(url_for('user', username=username))
+
+@app.route('/search', methods=['POST'])
+@login_required
+def search():
+    if not g.search_form.validate_on_submit():
+        return redirect(url_for('index'))
+    return redirect(url_for('search_results', query=g.search_form.search.data))
+
+@app.route('/search_results/<query>')
+@login_required
+def search_results(query):
+    results = Post.query.whoosh_search(query, MAX_SEARCH_RESULTS).all()
+    return render_template('search_results.html',
+                           query=query,
+                           results=results)
