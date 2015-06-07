@@ -7,6 +7,7 @@ from .forms import EditForm, PostForm
 from .models import User, Post
 from config import POSTS_PER_PAGE
 from config import MAX_SEARCH_RESULTS
+from .emails import follower_notification
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -133,6 +134,7 @@ def follow(username):
     db.session.add(u)
     db.session.commit()
     flash('You are now following ' + username + '!')
+    follower_notification(user, g.user)
     return redirect(url_for('user', username=username))
 
 @app.route('/unfollow/<username>')
