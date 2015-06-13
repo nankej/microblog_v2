@@ -43,3 +43,6 @@ if not app.debug:
     file_handler.setLevel(logging.INFO)
     app.logger.addHandler(file_handler)
     app.logger.info('microblog startup')
+
+from .momentjs import momentjs
+app.jinja_env.globals['momentjs'] = momentjs

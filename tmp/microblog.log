@@ -417,3 +417,5 @@ sqlalchemy.exc.NoReferencedTableError: Foreign key associated with column 'follo
 2015-06-12 17:41:58,286 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:45]
 2015-06-13 08:30:16,676 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:45]
 2015-06-13 08:30:17,296 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:45]
+2015-06-13 08:39:15,353 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:45]
+2015-06-13 09:55:53,799 INFO: microblog startup [in /home/jacobnanke/Projects/microblog_v2/app/__init__.py:45]

@@ -52,13 +52,13 @@ def login():
         remember_me = True
     registered_user = User.query.filter_by(username=username).first()
     if registered_user is None:
-        flash('Username is invalid' , 'error')
+        flash('Username is invalid', 'error')
         return redirect(url_for('login'))
     if not registered_user.check_password(password):
-        flash('Password is invalid','error')
+        flash('Password is invalid', 'error')
         return redirect(url_for('login'))
     login_user(registered_user, remember = remember_me)
-    flash('Logged in successfully sucka')
+    flash('Logged in successfully')
     return redirect(request.args.get('next') or url_for('index'))
 
 @app.route('/logout')
