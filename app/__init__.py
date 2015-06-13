@@ -6,11 +6,16 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
 from flask.ext.bootstrap import Bootstrap
 from flask.ext.mail import Mail
+from flask.ext.babel import Babel
+from .momentjs import momentjs
 
 app = Flask(__name__)
 app.config.from_object('config')
 
 db = SQLAlchemy(app)
+
+# app.config.from_pyfile('babel.cfg')
+babel = Babel(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -44,5 +49,5 @@ if not app.debug:
     app.logger.addHandler(file_handler)
     app.logger.info('microblog startup')
 
-from .momentjs import momentjs
 app.jinja_env.globals['momentjs'] = momentjs
+

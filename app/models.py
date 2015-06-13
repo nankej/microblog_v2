@@ -4,6 +4,7 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import app
 from hashlib import md5
+import re
 
 followers = db.Table('followers',
     db.Column('follower_id', db.Integer, db.ForeignKey('users.user_id')),
@@ -84,6 +85,10 @@ class User(db.Model):
                 break
             version += 1
         return new_username
+
+    @staticmethod
+    def make_valid_username(username):
+        return re.sub('[^a-zA-Z0-9_\.]', '', username)
 
 import flask.ext.whooshalchemy as whooshalchemy
 

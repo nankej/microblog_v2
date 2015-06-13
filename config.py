@@ -30,3 +30,11 @@ POSTS_PER_PAGE = 3
 # text search
 WHOOSH_BASE = os.path.join(basedir, 'search.db')
 MAX_SEARCH_RESULTS = 50
+
+# -*- coding: utf-8 -*-
+# ...
+# available languages
+LANGUAGES = {
+    'en': 'English',
+    'es': 'Español'
+}

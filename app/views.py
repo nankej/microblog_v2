@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from app import app, db, login_manager
+from app import app, db, login_manager, babel
 from datetime import datetime
 from .forms import SearchForm
 from .forms import EditForm, PostForm
@@ -8,6 +8,7 @@ from .models import User, Post
 from config import POSTS_PER_PAGE
 from config import MAX_SEARCH_RESULTS
 from .emails import follower_notification
+from config import LANGUAGES
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -31,7 +32,10 @@ def index(page=1):
 def register():
     if request.method == 'GET':
         return render_template('register.html')
-    user = User(request.form['username'] , request.form['password'],request.form['email'])
+    username = request.form['username']
+    username = User.make_valid_username(username)
+    username = User.make_unique_username(username)
+    user = User(username, request.form['password'], request.form['email'])
     db.session.add(user)
     db.session.commit()
     # make the user follow him/herself
@@ -48,6 +52,8 @@ def login():
     username = request.form['username']
     password = request.form['password']
     remember_me = False
+    # username = User.make_valid_username(username)
+    # username = User.make_unique_username(username)
     if 'remember_me' in request.form:
         remember_me = True
     registered_user = User.query.filter_by(username=username).first()
@@ -170,3 +176,7 @@ def search_results(query):
     return render_template('search_results.html',
                            query=query,
                            results=results)
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(LANGUAGES.keys())
